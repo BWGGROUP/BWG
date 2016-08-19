@@ -1,0 +1,7 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+pod 'AFNetworking', '~> 3.0'
+use_frameworks!
+#必须是4.0.1 高版本swift使用暂时有问题
+pod 'ReactiveCocoa','~> 4.0.1'
