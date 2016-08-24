@@ -1,0 +1,39 @@
+
+<style>
+    .overflow-scroll>.scroll{
+        background: #fff;
+    }
+    .bar-positive .button{
+        background-color: transparent;
+    }
+    .bar-positive .button.activated, .bar-positive .button.active {
+        background-color: transparent;
+    }
+    @media (min-width: 680px){
+        .active .modal-backdrop-bg {
+            opacity: 0;
+        }
+    }
+    video{
+        background:transparent url("src/model/modal/background.png") 50% 50% no-repeat;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        background-size:cover;
+    }
+
+</style>
+<ion-header-bar class="bar-positive">
+
+    <div class="title"  ></div>
+    <div class="buttons">
+        <button class="button" ng-click="videomodel.hide()">关闭</button>
+    </div>
+</ion-header-bar>
+<ion-content>
+    <h2 style="text-align: center;padding-top: 30px;margin-bottom: 20px">{{videoname}}</h2>
+    <video  width="100%"
+            controls="controls" ng-if="videopath">
+        <source src="{{videopath}}"/>
+    </video>
+</ion-content>

@@ -1,0 +1,120 @@
+<style>
+    .item-input-inset {
+        padding: 0;
+    }
+
+    .bar .button, .bar button {
+        z-index: 1;
+        padding: 0 8px;
+        min-width: initial;
+        min-height: 23px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 27px;
+    }
+
+    .button-style {
+        border-color: transparent;
+        background-color: #f60;
+        color: #fff;
+    }
+
+    .button:hover {
+        color: #fff;
+    }
+
+    .button.button-style.activated {
+        background-color: #fd9f61;
+    }
+
+    .item-img-left .item-content> img:first-child {
+        position: absolute;
+        top: 16px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .itemcontent {
+        padding-left: 52px;
+    }
+
+    .item p {
+        margin-bottom: 0;
+    }
+
+    .righttime {
+        position: absolute;
+        bottom: 15px;
+        right: 10px;
+    }
+</style>
+
+
+<ion-side-menus>
+    <!-- 中间内容 -->
+    <ion-side-menu-content>
+
+        <ion-header-bar class="bar-positive">
+            <div class="buttons" style="line-height: 32px;margin-left: 8px" ng-click="toggleLeft()">
+                <i class="ion-navicon-round" style="width: 45px;font-size: 29px"></i>
+            </div>
+            <div class="title"  ui-sref="main.card"></div>
+        </ion-header-bar>
+        <div class="bar bar-subheader">
+            <div class=" item-input-inset">
+                <label class="item-input-wrapper">
+                    <input ng-model="shareconfig.keyword" type="text"  placeholder="关键字搜索" style="width: 100%">
+                </label>
+                <button class="button button-style" ng-click="searchkeyword()">
+                    搜索
+                </button>
+            </div>
+        </div>
+        <ion-content class="has-subheader" overflow-scroll="false">
+            <ion-list>
+
+                <ion-item ng-repeat="item in datelist" class="item-img-left">
+                    <img ng-src="{{item.img}}" ng-init="fileimg(item)">
+
+                    <div class="itemcontent">
+                        <p style="font-size: 15px;line-height: 19px;">{{item.base_sharefile_name}}</p>
+
+                        <p style="font-size: 12px;line-height: 15px;">关键字:{{item.base_sharefile_keyword}}</p>
+
+                        <p style="font-size: 12px;line-height: 15px;">浏览数:{{item.base_sharefile_looknum}}</p>
+                    </div>
+                    <div class="righttime">
+                        <p style="font-size: 12px;line-height: 15px;">{{item.createtime.time | date:'yyyy-MM-dd'}}</p>
+                    </div>
+                    <ion-option-button class="button-calm"
+                                       ng-click="look(item)">
+                        查看
+                    </ion-option-button>
+                </ion-item>
+
+            </ion-list>
+            <ion-infinite-scroll
+                    on-infinite="loadMore()"
+                    distance="1%"
+                    ng-if="havemore"
+                    >
+            </ion-infinite-scroll>
+        </ion-content>
+        <iframe name="downfile" style="display: none;"></iframe>
+        <div id="msgTxt">
+            <form id='hiddenlink' action="" target='_blank'></form>
+        </div>
+    </ion-side-menu-content>
+
+    <!-- 左侧菜单 -->
+    <ion-side-menu side="left">
+
+
+        <sharetree tree-model="treedata"
+                   node-id=base_sharedir_code node-label="base_sharedir_name" node-children="childrens"></sharetree>
+
+    </ion-side-menu>
+
+
+</ion-side-menus>

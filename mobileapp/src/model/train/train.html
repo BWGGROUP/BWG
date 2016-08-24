@@ -1,0 +1,82 @@
+<style>
+.timestyle{
+    position: absolute;
+    right: 15px;
+
+}
+.contentstyle{
+    padding-top: 5px;
+    padding-left: 52px;
+}
+.item-img-left .item-content> img:first-child {
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.itemcontent {
+    padding-left: 52px;
+}
+
+.item p {
+    margin-bottom: 0;
+}
+.righttime {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+</style>
+<ion-side-menus>
+    <!-- 中间内容 -->
+    <ion-side-menu-content >
+
+        <ion-header-bar  class="bar-positive">
+            <div class="buttons" style="line-height: 32px;margin-left: 8px" ng-click="toggleLeft()">
+                <i class="ion-navicon-round"  style="width: 45px;font-size: 29px"></i>
+            </div>
+            <div class="title" ui-sref="main.card"></div>
+        </ion-header-bar>
+
+        <ion-content  overflow-scroll="false">
+        <ion-list>
+
+            <ion-item ng-repeat="item in trainfiledata" class="item-img-left">
+                <img ng-src="{{item.img}}" ng-init="fileimg(item)">
+                <div class="contentstyle">
+                    <p style="line-height: 19px;font-size: 20px">{{item.base_trainfile_name}}</p>
+                    <p style="line-height: 30px;font-size: 14px">浏览数：{{item.base_trainfile_looknum}}</p>
+                    <div class="righttime">{{item.createtime.time | date:'yyyy-MM-dd'}}</div>
+                </div>
+
+                <!--<ion-delete-button class="ion-minus-circled"-->
+                                   <!--ng-click="onItemDelete(item)">-->
+                <!--</ion-delete-button>-->
+
+
+            </ion-item>
+
+        </ion-list>
+            <!--滚动加载更多-->
+            <ion-infinite-scroll
+                    on-infinite="loadMore()"
+                    distance="1%"
+                    ng-if="havemore">
+            </ion-infinite-scroll>
+        </ion-content>
+
+    </ion-side-menu-content>
+
+    <!-- 左侧菜单 -->
+    <ion-side-menu side="left">
+
+
+<traintree tree-model="treedata" firstnode=true
+           node-id=base_traindir_code node-label="base_traindir_name" node-children="childrens"></traintree>
+
+    </ion-side-menu>
+
+
+</ion-side-menus>

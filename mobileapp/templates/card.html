@@ -1,0 +1,63 @@
+
+<style>
+    .scroll{
+        height: 100%;
+    }
+    .item.tabs{
+        height: 80px;
+        margin:  0;
+
+    }
+    .tab-item{
+        padding-top: 5px;
+        opacity: 1;
+    }
+    .tabs{
+        background-image:none;
+    }
+</style>
+<ion-view >
+    <ion-content scroll="false">
+
+       <div class="cardcontent">
+           <div class="item tabs tabs-secondary tabs-icon-bottom">
+
+               <div class="tab-item" style=" border-right: 1px solid #c5c5c5;">
+                   <img src="img/home.png" style="height: 50px">
+                   <p>SIMS</p>
+               </div>
+               <div class="tab-item" style=" border-right: 1px solid #c5c5c5;" ui-sref="train">
+                   <img src="img/train.png" style="height: 50px">
+                   <p>培训</p>
+               </div>
+               <div class="tab-item" >
+                   <img src="img/share.png" style="height: 50px" ui-sref="share">
+                   <p>共享文件</p>
+               </div>
+
+
+
+           </div>
+
+
+
+           <div class="item tabs tabs-secondary tabs-icon-bottom" >
+
+               <div class="tab-item" style=" border-right: 1px solid #c5c5c5;">
+                   <img src="img/weak.png" style="height: 50px">
+                   <p>周报</p>
+               </div>
+               <div class="tab-item" style=" border-right: 1px solid #c5c5c5;">
+                   <img src="img/evaluate.png" style="height: 50px">
+                   <p>评价</p>
+               </div>
+               <div class="tab-item">
+                  <div style="width: 58px;height: 50px"> </div>
+               </div>
+           </div>
+       </div>
+
+
+
+    </ion-content>
+</ion-view>
